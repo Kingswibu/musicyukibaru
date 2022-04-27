@@ -36,7 +36,7 @@ loop = asyncio.get_running_loop()
 
 
 @app.on_message(
-    filters.command(get_command("START_COMMAND"))
+    filters.command(get_command(""))
     & filters.private
     & ~filters.edited
     & ~BANNED_USERS
@@ -197,19 +197,19 @@ async def start_comm(client, message: Message, _):
             try:
                 await message.reply_photo(
                     photo=config.START_IMG_URL,
-                    caption=_["start_2"].format(
+                    caption=_[""].format(
                         config.MUSIC_BOT_NAME
                     ),
                     reply_markup=InlineKeyboardMarkup(out),
                 )
             except:
                 await message.reply_text(
-                    _["start_2"].format(config.MUSIC_BOT_NAME),
+                    _[""].format(config.MUSIC_BOT_NAME),
                     reply_markup=InlineKeyboardMarkup(out),
                 )
         else:
             await message.reply_text(
-                _["start_2"].format(config.MUSIC_BOT_NAME),
+                _[""].format(config.MUSIC_BOT_NAME),
                 reply_markup=InlineKeyboardMarkup(out),
             )
         if await is_on_off(config.LOG):
@@ -222,7 +222,7 @@ async def start_comm(client, message: Message, _):
 
 
 @app.on_message(
-    filters.command(get_command("START_COMMAND"))
+    filters.command(get_command(""))
     & filters.group
     & ~filters.edited
     & ~BANNED_USERS
@@ -263,7 +263,7 @@ async def welcome(client, message: Message):
                     return await app.leave_chat(message.chat.id)
                 if chat_id in await blacklisted_chats():
                     await message.reply_text(
-                        _["start_7"].format(
+                        _[""].format(
                             f"https://t.me/{app.username}?start=sudolist"
                         )
                     )
@@ -271,7 +271,7 @@ async def welcome(client, message: Message):
                 userbot = await get_assistant(message.chat.id)
                 out = start_pannel(_)
                 await message.reply_text(
-                    _["start_3"].format(
+                    _[""].format(
                         config.MUSIC_BOT_NAME,
                         userbot.username,
                         userbot.id,
